@@ -8,7 +8,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 
-import 'app/modules/common/controllers/app_controller.dart';
 import 'app/modules/common/controllers/route_controller.dart';
 import 'app/modules/common/controllers/user_controller.dart';
 import 'app/modules/common/widgets/appbar/bottom_app_bar/bottom_app_bar_controller.dart';
@@ -20,24 +19,21 @@ import 'core/services/languages/language_service.dart';
 import 'core/services/storage/custom_storage_service.dart';
 import 'core/services/storage/storage_key_enums.dart';
 import 'firebase_options.dart';
+import 'generated/locales.g.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
-  hiveInitilize();
   await Hive.openBox(StorageKeys.customStorage.name);
   await initApp();
 }
 
-void hiveInitilize() {}
-
 Future<void> initApp() async {
   Get.put(CustomStorageService());
-  Get.put(UserController());
   Get.put(RouteController());
   Get.put(BottomAppBarController());
-  Get.put(AppController());
+  Get.put(UserController());
   Get.put(LanguageService());
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
@@ -61,11 +57,13 @@ class MyApp extends StatelessWidget {
       initialBinding: SplashBinding(),
       fallbackLocale: LanguageService.fallbackLocale,
       locale: languageService.currentLocale,
+      translationsKeys: AppTranslation.translations,
       builder: routeController.materialRouteBuilder,
       routingCallback: routeController.materialRouteCallBack,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: locales.values,
       theme: AppThemes.light,

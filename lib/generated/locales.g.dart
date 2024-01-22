@@ -59,6 +59,14 @@ class LocaleKeys {
   static const common_wait = 'common_wait';
   static const common_language_subtitle = 'common_language_subtitle';
   static const common_logout_subtitle = 'common_logout_subtitle';
+  static const register_info_text = 'register_info_text';
+  static const login_info_text = 'login_info_text';
+  static const common_english = 'common_english';
+  static const common_turkish = 'common_turkish';
+  static const common_netherlens = 'common_netherlens';
+  static const common_russian = 'common_russian';
+  static const common_arabic = 'common_arabic';
+  static const common_add_hobby_fab_text = 'common_add_hobby_fab_text';
 }
 
 class Locales {
@@ -110,6 +118,14 @@ class Locales {
     'common_language_subtitle':
         'Dil Değişikliği Yapmak İstediğinize Emin Misiniz?',
     'common_logout_subtitle': 'Çıkış Yapmak İstediğinize Emin Misiniz?',
+    'register_info_text': 'Halen hesabın yok mu? Kayıt Ol!',
+    'login_info_text': 'Hesabın Var Mı? Giriş Yap!',
+    'common_english': 'İngilizce',
+    'common_turkish': 'Türkçe',
+    'common_netherlens': 'Flemenkçe',
+    'common_russian': 'Rusça',
+    'common_arabic': 'Arapça',
+    'common_add_hobby_fab_text': 'Hobi Ekle',
   };
   static const ar_AE = {
     'common_remember_me': 'تذكرني',
@@ -159,6 +175,14 @@ class Locales {
     'common_wait': 'انتظر',
     'common_language_subtitle': 'هل أنت متأكد من أنك تريد تغيير اللغة؟',
     'common_logout_subtitle': 'هل أنت متأكد أنك تريد الخروج؟',
+    'register_info_text': 'هل لا يزال لديك حساب؟ سجل!',
+    'login_info_text': 'هل لديك حساب؟ تسجيل الدخول!',
+    'common_english': 'إنجليزي',
+    'common_turkish': 'اللغة التركية',
+    'common_netherlens': 'هولندي',
+    'common_russian': 'الروسية',
+    'common_arabic': 'عربي',
+    'common_add_hobby_fab_text': 'أضف هواية',
   };
   static const en_US = {
     'common_remember_me': 'Remember me',
@@ -208,6 +232,14 @@ class Locales {
     'common_wait': 'Wait',
     'common_language_subtitle': 'Are you sure you want to change the language?',
     'common_logout_subtitle': 'Are you sure you want to get out?',
+    'register_info_text': 'Do you still have an account? Register!',
+    'login_info_text': 'Do you have an account? Login!',
+    'common_english': 'English',
+    'common_turkish': 'Turkish',
+    'common_netherlens': 'Dutch',
+    'common_russian': 'Russian',
+    'common_arabic': 'Arabic',
+    'common_add_hobby_fab_text': 'Add Hobby',
   };
   static const ru_RU = {
     'common_remember_me': 'Запомнить меня',
@@ -257,6 +289,14 @@ class Locales {
     'common_wait': 'Ждать',
     'common_language_subtitle': 'Вы уверены, что хотите изменить язык?',
     'common_logout_subtitle': 'Вы уверены, что хотите выйти?',
+    'register_info_text': 'У вас еще есть аккаунт? Регистр!',
+    'login_info_text': 'У тебя есть аккаунт? Авторизоваться!',
+    'common_english': 'Английский',
+    'common_turkish': 'турецкий',
+    'common_netherlens': 'Голландский',
+    'common_russian': 'Русский',
+    'common_arabic': 'арабский',
+    'common_add_hobby_fab_text': 'Добавить хобби',
   };
   static const nl_NL = {
     'common_remember_me': 'Onthoud me',
@@ -306,5 +346,13 @@ class Locales {
     'common_wait': 'Wachten',
     'common_language_subtitle': 'Weet u zeker dat u de taal wilt veranderen?',
     'common_logout_subtitle': 'Weet je zeker dat je eruit wilt?',
+    'register_info_text': 'Heeft u nog een account? Register!',
+    'login_info_text': 'Heb je een account? Log in!',
+    'common_english': 'Engels',
+    'common_turkish': 'Turks',
+    'common_netherlens': 'Nederlands',
+    'common_russian': 'Russisch',
+    'common_arabic': 'Arabisch',
+    'common_add_hobby_fab_text': 'Voeg hobby toe',
   };
 }

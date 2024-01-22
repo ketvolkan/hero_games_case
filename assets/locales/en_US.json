@@ -44,4 +44,4 @@
   "common_wait": "Wait",
   "common_language_subtitle": "Are you sure you want to change the language?",
   "common_logout_subtitle": "Are you sure you want to get out?"
-}
+,"register_info_text":"Do you still have an account? Register!","login_info_text":"Do you have an account? Login!","common_english":"English","common_turkish":"Turkish","common_netherlens":"Dutch","common_russian":"Russian","common_arabic":"Arabic","common_add_hobby_fab_text":"Add Hobby"}

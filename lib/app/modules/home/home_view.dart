@@ -42,7 +42,7 @@ class HomeView extends GetView<HomeController> {
 
   CustomExtendedFabButton buildFabButton() {
     return CustomExtendedFabButton(
-      label: CustomText("Hobi Ekle", textColor: ColorTable.getReversedTextColor, bold: true),
+      label: CustomText(LocaleKeys.common_add_hobby_fab_text.tr, textColor: ColorTable.getReversedTextColor, bold: true),
       onTap: () => controller.fabButtonOnTap(),
       icon: Icon(
         Icons.add_circle_outline_outlined,
@@ -54,6 +54,7 @@ class HomeView extends GetView<HomeController> {
 
   DefaultAppBar buildAppBar() {
     return DefaultAppBar(
+      showLeadingBackIcon: false,
       title: CustomText.high(LocaleKeys.common_hobbies.tr),
       leadingIcon: IconWithBackground.withIcon(icon: FeatherIcons.activity, iconColor: Get.theme.primaryColor),
     );

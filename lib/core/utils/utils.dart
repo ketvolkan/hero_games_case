@@ -1,12 +1,8 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../app/modules/common/controllers/app_controller.dart';
 import '../../generated/locales.g.dart';
-import '../constants/endpoints.dart';
-import '../contracts/response_models/user_internet_info_model.dart';
 
 Future<R?> errorHandler<R>({required Future<R?> Function() tryMethod, required Future<R?> Function() onErr}) async {
   try {
@@ -166,25 +162,4 @@ extension CustomStringExtensions on String {
     if (length < n) return "";
     return substring(length - n);
   }
-}
-
-Future<UserInternetInfoModel?> getUserInternetInformation() async {
-  errorHandler(
-    tryMethod: () async {
-      final appController = Get.find<AppController>();
-      final request = Dio(
-        BaseOptions(
-          baseUrl: Endpoints.userInternetInfo.path,
-          connectTimeout: const Duration(milliseconds: 2000),
-          contentType: "application/json",
-        ),
-      );
-      final response = await request.get("");
-      UserInternetInfoModel userInternetInfoModel = UserInternetInfoModel.fromJson(response.data);
-      appController.userInternetInfoModel = userInternetInfoModel;
-      return userInternetInfoModel;
-    },
-    onErr: () async {},
-  );
-  return null;
 }

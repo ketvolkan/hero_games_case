@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/variables/colors.dart';
 
@@ -12,7 +13,7 @@ class CustomCheckBox extends StatelessWidget {
     return Checkbox(
       onChanged: onChanged,
       value: value,
-      activeColor: ColorTable.successColor,
+      activeColor: Get.theme.primaryColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       side: BorderSide(color: ColorTable.getTextColor, width: 1.2),
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

@@ -44,4 +44,4 @@
     "common_wait": "انتظر",
     "common_language_subtitle": "هل أنت متأكد من أنك تريد تغيير اللغة؟",
     "common_logout_subtitle": "هل أنت متأكد أنك تريد الخروج؟"
-}
+,"register_info_text":"هل لا يزال لديك حساب؟ سجل!","login_info_text":"هل لديك حساب؟ تسجيل الدخول!","common_english":"إنجليزي","common_turkish":"اللغة التركية","common_netherlens":"هولندي","common_russian":"الروسية","common_arabic":"عربي","common_add_hobby_fab_text":"أضف هواية"}

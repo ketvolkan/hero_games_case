@@ -44,4 +44,4 @@
     "common_wait": "Ждать",
     "common_language_subtitle": "Вы уверены, что хотите изменить язык?",
     "common_logout_subtitle": "Вы уверены, что хотите выйти?"
-}
+,"register_info_text":"У вас еще есть аккаунт? Регистр!","login_info_text":"У тебя есть аккаунт? Авторизоваться!","common_english":"Английский","common_turkish":"турецкий","common_netherlens":"Голландский","common_russian":"Русский","common_arabic":"арабский","common_add_hobby_fab_text":"Добавить хобби"}

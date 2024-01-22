@@ -19,7 +19,12 @@ class RegisterView extends GetView<RegisterController> {
     return CustomScaffold(
       backgroundColor: Get.theme.primaryColor,
       bodyPadding: EdgeInsets.zero,
-      body: Column(mainAxisAlignment: MainAxisAlignment.end, children: [logoSide, borderedBoxSide()]),
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: Get.height,
+          child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [Expanded(child: logoSide), borderedBoxSide()]),
+        ),
+      ),
     );
   }
 
@@ -48,45 +53,43 @@ class RegisterView extends GetView<RegisterController> {
   Form formSide() {
     return Form(
       key: controller.formKey,
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: Utils.extraHighPadding),
-            nameField(),
-            SizedBox(height: Utils.highPadding),
-            emailField(),
-            SizedBox(height: Utils.highPadding),
-            Row(
-              children: [
-                Expanded(child: passwordField()),
-                SizedBox(width: Utils.normalPadding),
-                Expanded(child: passwordRepeatField()),
-              ],
-            ),
-            SizedBox(height: Utils.extraHighPadding),
-            SocialButton(
-              socialEnum: SocialEnum.apple,
-              isRegister: true,
-              onPressed: (buttonType) async => controller.appleRegister(),
-            ),
-            SizedBox(height: Utils.lowPadding),
-            SocialButton(
-              socialEnum: SocialEnum.facebook,
-              isRegister: true,
-              onPressed: (buttonType) async => controller.facebookRegister(),
-            ),
-            SizedBox(height: Utils.lowPadding),
-            SocialButton(
-              socialEnum: SocialEnum.google,
-              isRegister: true,
-              onPressed: (buttonType) async => controller.googleRegister(),
-            ),
-            SizedBox(height: Utils.extraHighPadding),
-            InkWell(onTap: () => controller.login(), child: CustomText("Hesabın Var Mı? Giriş Yap!")),
-          ],
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: Utils.extraHighPadding),
+          nameField(),
+          SizedBox(height: Utils.highPadding),
+          emailField(),
+          SizedBox(height: Utils.highPadding),
+          Row(
+            children: [
+              Expanded(child: passwordField()),
+              SizedBox(width: Utils.normalPadding),
+              Expanded(child: passwordRepeatField()),
+            ],
+          ),
+          SizedBox(height: Utils.extraHighPadding),
+          SocialButton(
+            socialEnum: SocialEnum.apple,
+            isRegister: true,
+            onPressed: (buttonType) async => controller.appleRegister(),
+          ),
+          SizedBox(height: Utils.lowPadding),
+          SocialButton(
+            socialEnum: SocialEnum.facebook,
+            isRegister: true,
+            onPressed: (buttonType) async => controller.facebookRegister(),
+          ),
+          SizedBox(height: Utils.lowPadding),
+          SocialButton(
+            socialEnum: SocialEnum.google,
+            isRegister: true,
+            onPressed: (buttonType) async => controller.googleRegister(),
+          ),
+          SizedBox(height: Utils.extraHighPadding),
+          InkWell(onTap: () => controller.login(), child: CustomText(LocaleKeys.login_info_text.tr)),
+        ],
       ),
     );
   }

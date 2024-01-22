@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../generated/locales.g.dart';
 import '../storage/custom_storage_service.dart';
 import '../storage/storage_key_enums.dart';
 
@@ -14,17 +15,15 @@ enum LocaleLanguages {
   String get text {
     switch (this) {
       case LocaleLanguages.en:
-        return "İngilizce";
+        return LocaleKeys.common_english.tr;
       case LocaleLanguages.tr:
-        return "Türkçe";
+        return LocaleKeys.common_turkish.tr;
       case LocaleLanguages.nl:
-        return "Flemenkçe";
+        return LocaleKeys.common_netherlens.tr;
       case LocaleLanguages.ru:
-        return "Rusça";
+        return LocaleKeys.common_russian.tr;
       case LocaleLanguages.ar:
-        return "Arapça";
-      default:
-        return "Türkçe";
+        return LocaleKeys.common_arabic.tr;
     }
   }
 }

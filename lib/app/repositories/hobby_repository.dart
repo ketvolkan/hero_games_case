@@ -19,7 +19,9 @@ class HobbyRepository {
     var documents = await ref.get();
     List<HobbyModel> hobbies = [];
     for (var document in documents.docs) {
-      hobbies.add(HobbyModel.fromJson(document.data()));
+      HobbyModel hobbyModel = HobbyModel.fromJson(document.data());
+      hobbyModel.id = document.id;
+      hobbies.add(hobbyModel);
     }
     return hobbies;
   }

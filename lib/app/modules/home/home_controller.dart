@@ -8,6 +8,7 @@ import '../../../core/variables/colors.dart';
 import '../../../generated/locales.g.dart';
 import '../../models/hobby_models/hobby_model.dart';
 import '../../repositories/hobby_repository.dart';
+import '../common/controllers/user_controller.dart';
 import '../common/widgets/buttons/custom_elevated_button.dart';
 import '../common/widgets/textfield/custom_text_form_field.dart';
 import '../common/widgets/texts/custom_text.dart';
@@ -16,6 +17,8 @@ enum HomeState { Initial, Busy, Loaded, Error }
 
 class HomeController extends GetxController {
   final HobbyRepository _hobbyRepository = Get.find<HobbyRepository>();
+  final UserController userController = Get.find<UserController>();
+
   final Rx<HomeState> _state = HomeState.Initial.obs;
   HomeState get state => _state.value;
   set state(HomeState value) => _state.value = value;

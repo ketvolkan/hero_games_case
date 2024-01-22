@@ -20,7 +20,12 @@ class LoginView extends GetView<LoginController> {
     return CustomScaffold(
       backgroundColor: Get.theme.primaryColor,
       bodyPadding: EdgeInsets.zero,
-      body: Column(mainAxisAlignment: MainAxisAlignment.end, children: [logoSide, borderedBoxSide()]),
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: Get.height,
+          child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [Expanded(child: logoSide), borderedBoxSide()]),
+        ),
+      ),
     );
   }
 
@@ -74,7 +79,7 @@ class LoginView extends GetView<LoginController> {
             onPressed: (buttonType) async => controller.googleSignIn(),
           ),
           SizedBox(height: Utils.extraHighPadding),
-          InkWell(onTap: () => controller.register(), child: CustomText("Halen hesabın yok mu? Kayıt Ol!")),
+          InkWell(onTap: () => controller.register(), child: CustomText(LocaleKeys.register_info_text.tr)),
         ],
       ),
     );

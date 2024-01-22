@@ -35,7 +35,6 @@ class CustomBottomAppBar extends GetView<BottomAppBarController> {
         icon: Icon(iconData),
         color: controller.tabIndex == index ? Get.theme.primaryColor : ColorTable.getTextColor,
         onPressed: () {
-          if (isDialogOpened) return;
           if (Get.isOverlaysOpen) return;
           controller.changeTabIndex(index: index);
         },

@@ -25,7 +25,11 @@ class SplashView extends GetView<SplashController> {
     );
   }
 
-  Image logoSide() => const Image(image: AssetImage(AppConstants.logoPath));
+  Image logoSide() => Image(
+        image: const AssetImage(AppConstants.logoPath),
+        color: Get.theme.primaryColor,
+        height: Get.height * 0.2,
+      );
 
   SizedBox circularProgressSplash() {
     return SizedBox.square(

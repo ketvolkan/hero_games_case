@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/services/storage/custom_storage_service.dart';
@@ -18,26 +17,27 @@ class SplashController extends GetxController {
   String loading = LocaleKeys.common_loading.tr;
   @override
   void onReady() async {
-    await getUserInternetInformation();
-    await checkSplashLogin();
-    Get.offAndToNamed(AppRoutes.login.path);
+    if (!(await checkSplashLogin())) Get.offAndToNamed(AppRoutes.login.path);
+
     super.onReady();
   }
 
-  Future<void> checkSplashLogin() async {
-    errorHandler(
-      tryMethod: () async {
-        bool? rememberMe = customStorageService.read(StorageKeys.rememberMe.name);
-        if (!(rememberMe ?? false)) return;
-        String? email = customStorageService.read(StorageKeys.email.name);
-        String? password = customStorageService.read(StorageKeys.password.name);
-        if (email == null || password == null) return;
-        User? result = await authRepository.signIn(loginModel: LoginModel(email: email, password: password));
-        if (result == null) return;
-        userController.user = result;
-        Get.offAndToNamed(AppRoutes.home.path);
-      },
-      onErr: () async {},
-    );
+  Future<bool> checkSplashLogin() async {
+    return await errorHandler<bool>(
+          tryMethod: () async {
+            bool? rememberMe = customStorageService.read(StorageKeys.rememberMe.name);
+            if (!(rememberMe ?? false)) return false;
+            String? email = customStorageService.read(StorageKeys.email.name);
+            String? password = customStorageService.read(StorageKeys.password.name);
+            if (email == null || password == null) return false;
+            final result = await authRepository.signIn(loginModel: LoginModel(email: email, password: password));
+            if (result == null) return false;
+            userController.user = result;
+            Get.offAndToNamed(AppRoutes.home.path);
+            return true;
+          },
+          onErr: () async => false,
+        ) ??
+        false;
   }
 }

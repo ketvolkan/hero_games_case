@@ -80,7 +80,6 @@ extension CustomGetDialogExtension on GetInterface {
       RouteController routeController = Get.find<RouteController>();
       routeController.isDialogOpened = true;
       CustomAwesomeDialog(
-              width: Get.width * 0.9,
               dialogBackgroundColor: Get.theme.scaffoldBackgroundColor,
               context: Get.context!,
               showCloseIcon: showCloseIcon,
@@ -139,7 +138,12 @@ extension CustomGetDialogExtension on GetInterface {
       Stack(
         alignment: Alignment.center,
         children: [
-          Image(image: const AssetImage(AppConstants.logoPath), width: Get.height * 0.07, height: Get.height * 0.07),
+          Image(
+            image: const AssetImage(AppConstants.logoPath),
+            color: ColorTable.getReversedTextColor,
+            width: Get.height * 0.07,
+            height: Get.height * 0.07,
+          ),
           SizedBox.square(
             dimension: Get.height * 0.125,
             child: CircularProgressIndicator(

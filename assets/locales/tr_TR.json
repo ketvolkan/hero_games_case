@@ -43,5 +43,12 @@
     "common_cancel": "İptal",
     "common_wait": "Bekle",
     "common_language_subtitle": "Dil Değişikliği Yapmak İstediğinize Emin Misiniz?",
-    "common_logout_subtitle": "Çıkış Yapmak İstediğinize Emin Misiniz?"
-}
+    "common_logout_subtitle": "Çıkış Yapmak İstediğinize Emin Misiniz?",
+    "register_info_text": "Halen hesabın yok mu? Kayıt Ol!",
+    "login_info_text": "Hesabın Var Mı? Giriş Yap!",
+    "common_english": "İngilizce",
+    "common_turkish": "Türkçe",
+    "common_netherlens": "Flemenkçe",
+    "common_russian": "Rusça",
+    "common_arabic": "Arapça"
+,"common_add_hobby_fab_text":"Hobi Ekle"}

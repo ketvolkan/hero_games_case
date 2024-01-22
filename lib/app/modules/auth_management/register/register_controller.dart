@@ -47,9 +47,9 @@ class RegisterController extends GetxController {
       await errorHandler(
         tryMethod: () async {
           state = RegisterState.Busy;
-          User? result = await authRepository.register(registerModel: registerModel);
-          if (result == null) {
-            Get.showToast(LocaleKeys.common_register_error.tr, toastStyle: ToastStyle.ERROR);
+          final result = await authRepository.register(registerModel: registerModel);
+          if (result == null || result is! User) {
+            Get.showToast(result ?? LocaleKeys.common_register_error.tr, toastStyle: ToastStyle.ERROR);
             state = RegisterState.Error;
             return;
           }

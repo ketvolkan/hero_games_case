@@ -9,12 +9,13 @@ import '../widgets/appbar/bottom_app_bar/bottom_app_bar_controller.dart';
 
 class UserController extends GetxController {
   CustomStorageService storageService = Get.find<CustomStorageService>();
+  BottomAppBarController bottomAppBarController = Get.find<BottomAppBarController>();
   User? user;
   get logOut async {
-    if (Get.isRegistered<AuthRepository>()) {
-      Get.find<AuthRepository>().signOut();
-    }
-    Get.find<BottomAppBarController>().changeTabIndex(index: 0);
+    if (Get.isRegistered<AuthRepository>()) Get.find<AuthRepository>().signOut();
+    user = null;
+    bottomAppBarController.changeTabIndex(index: 0);
+    bottomAppBarController.lastDashboardPage = AppRoutes.home.path;
     await storageService.remove(StorageKeys.email.name);
     await storageService.remove(StorageKeys.password.name);
     await storageService.remove(StorageKeys.rememberMe.name);

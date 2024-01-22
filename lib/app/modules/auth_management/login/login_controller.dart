@@ -56,9 +56,9 @@ class LoginController extends GetxController {
       await errorHandler(
         tryMethod: () async {
           state = LoginState.Busy;
-          User? result = await authRepository.signIn(loginModel: loginModel);
-          if (result == null) {
-            Get.showToast(LocaleKeys.common_login_error.tr, toastStyle: ToastStyle.WARNING);
+          final result = await authRepository.signIn(loginModel: loginModel);
+          if (result == null || result is! User) {
+            Get.showToast(result ?? LocaleKeys.common_login_error.tr, toastStyle: ToastStyle.WARNING);
             state = LoginState.Error;
             return;
           }

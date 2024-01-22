@@ -8,18 +8,26 @@ class AuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<User?> signIn({required LoginModel loginModel}) async {
-    var user = await _auth.signInWithEmailAndPassword(email: loginModel.email ?? "", password: loginModel.password ?? "");
-    return user.user;
+  Future<dynamic> signIn({required LoginModel loginModel}) async {
+    try {
+      var user = await _auth.signInWithEmailAndPassword(email: loginModel.email ?? "", password: loginModel.password ?? "");
+      return user.user;
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
   }
 
   signOut() async {
     return await _auth.signOut();
   }
 
-  Future<User?> register({required RegisterModel registerModel}) async {
-    var user = await _auth.createUserWithEmailAndPassword(email: registerModel.email ?? "", password: registerModel.password ?? "");
-    await _firestore.collection("Person").doc(user.user!.uid).set({'userName': registerModel.name, 'email': registerModel.email});
-    return user.user;
+  Future<dynamic> register({required RegisterModel registerModel}) async {
+    try {
+      var user = await _auth.createUserWithEmailAndPassword(email: registerModel.email ?? "", password: registerModel.password ?? "");
+      await _firestore.collection("Person").doc(user.user!.uid).set({'userName': registerModel.name, 'email': registerModel.email});
+      return user.user;
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
   }
 }
