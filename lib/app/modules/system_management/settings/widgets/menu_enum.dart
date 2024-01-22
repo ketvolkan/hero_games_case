@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/services/languages/language_service.dart';
+import '../../../../../generated/locales.g.dart';
 import '../../../common/widgets/appbar/bottom_app_bar/bottom_app_bar_controller.dart';
 import '../../../common/widgets/icons/icon_with_background.dart';
 import '../settings_controller.dart';

@@ -1,11 +1,11 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../../core/utils/getx_extensions.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/variables/colors.dart';
+import '../../../generated/locales.g.dart';
 import '../../models/hobby_models/hobby_model.dart';
 import '../../repositories/hobby_repository.dart';
 import '../common/widgets/buttons/custom_elevated_button.dart';

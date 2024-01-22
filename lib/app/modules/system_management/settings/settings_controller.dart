@@ -1,10 +1,10 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../../core/services/languages/language_service.dart';
 import '../../../../core/utils/getx_extensions.dart';
+import '../../../../generated/locales.g.dart';
 import '../../common/controllers/user_controller.dart';
 import '../../common/widgets/appbar/bottom_app_bar/bottom_app_bar_controller.dart';
 import 'widgets/menu_enum.dart';

@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../generated/locales.g.dart';
+
 import '../../../../core/services/storage/custom_storage_service.dart';
 import '../../../../core/services/storage/storage_key_enums.dart';
 import '../../../../core/utils/getx_extensions.dart';
 import '../../../../core/utils/utils.dart';
+import '../../../../generated/locales.g.dart';
 import '../../../models/auth_models/login_model.dart';
 import '../../../repositories/auth_repository.dart';
 import '../../../routes/app_routes.dart';

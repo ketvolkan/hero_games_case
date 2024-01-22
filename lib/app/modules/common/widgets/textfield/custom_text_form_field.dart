@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../../../core/utils/getx_extensions.dart';
 import '../../../../../core/utils/utils.dart';
 import '../../../../../core/variables/colors.dart';
+import '../../../../../generated/locales.g.dart';
 import '../texts/custom_text.dart';
 
 class CustomTextFormField extends StatelessWidget {

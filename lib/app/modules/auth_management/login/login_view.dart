@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../generated/locales.g.dart';
+
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/variables/colors.dart';
+import '../../../../generated/locales.g.dart';
 import '../../common/widgets/buttons/custom_elevated_button.dart';
 import '../../common/widgets/buttons/social_button.dart';
 import '../../common/widgets/other/custom_checkbox.dart';

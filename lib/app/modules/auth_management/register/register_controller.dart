@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../../core/utils/getx_extensions.dart';
 import '../../../../core/utils/utils.dart';
+import '../../../../generated/locales.g.dart';
 import '../../../models/auth_models/register_model.dart';
 import '../../../repositories/auth_repository.dart';
 import '../../../routes/app_routes.dart';

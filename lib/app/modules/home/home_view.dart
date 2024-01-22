@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../../core/variables/colors.dart';
+import '../../../generated/locales.g.dart';
 import '../../models/hobby_models/hobby_model.dart';
 import '../common/widgets/appbar/default_app_bar.dart';
 import '../common/widgets/buttons/custom_extended_fab_button.dart';
