@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../../generated/locales.g.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/variables/colors.dart';
+import '../../../../generated/locales.g.dart';
 import '../../common/widgets/buttons/custom_elevated_button.dart';
 import '../../common/widgets/buttons/social_button.dart';
 import '../../common/widgets/other/custom_scaffold.dart';
@@ -47,56 +48,48 @@ class RegisterView extends GetView<RegisterController> {
   Form formSide() {
     return Form(
       key: controller.formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(height: Utils.extraHighPadding),
-          Row(
-            children: [
-              Expanded(child: nameField()),
-              SizedBox(width: Utils.normalPadding),
-              Expanded(child: surnameField()),
-            ],
-          ),
-          SizedBox(height: Utils.highPadding),
-          emailField(),
-          SizedBox(height: Utils.highPadding),
-          Row(
-            children: [
-              Expanded(child: passwordField()),
-              SizedBox(width: Utils.normalPadding),
-              Expanded(child: passwordRepeatField()),
-            ],
-          ),
-          SizedBox(height: Utils.extraHighPadding),
-          SocialButton(
-            socialEnum: SocialEnum.apple,
-            isRegister: true,
-            onPressed: (buttonType) async => controller.appleRegister(),
-          ),
-          SizedBox(height: Utils.lowPadding),
-          SocialButton(
-            socialEnum: SocialEnum.facebook,
-            isRegister: true,
-            onPressed: (buttonType) async => controller.facebookRegister(),
-          ),
-          SizedBox(height: Utils.lowPadding),
-          SocialButton(
-            socialEnum: SocialEnum.google,
-            isRegister: true,
-            onPressed: (buttonType) async => controller.googleRegister(),
-          ),
-          SizedBox(height: Utils.extraHighPadding),
-          InkWell(onTap: () => controller.login(), child: CustomText("Hesabın Var Mı? Giriş Yap!")),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: Utils.extraHighPadding),
+            nameField(),
+            SizedBox(height: Utils.highPadding),
+            emailField(),
+            SizedBox(height: Utils.highPadding),
+            Row(
+              children: [
+                Expanded(child: passwordField()),
+                SizedBox(width: Utils.normalPadding),
+                Expanded(child: passwordRepeatField()),
+              ],
+            ),
+            SizedBox(height: Utils.extraHighPadding),
+            SocialButton(
+              socialEnum: SocialEnum.apple,
+              isRegister: true,
+              onPressed: (buttonType) async => controller.appleRegister(),
+            ),
+            SizedBox(height: Utils.lowPadding),
+            SocialButton(
+              socialEnum: SocialEnum.facebook,
+              isRegister: true,
+              onPressed: (buttonType) async => controller.facebookRegister(),
+            ),
+            SizedBox(height: Utils.lowPadding),
+            SocialButton(
+              socialEnum: SocialEnum.google,
+              isRegister: true,
+              onPressed: (buttonType) async => controller.googleRegister(),
+            ),
+            SizedBox(height: Utils.extraHighPadding),
+            InkWell(onTap: () => controller.login(), child: CustomText("Hesabın Var Mı? Giriş Yap!")),
+          ],
+        ),
       ),
     );
   }
-
-  InkWell forgotPassword() => InkWell(
-        onTap: () => forgotPassword(),
-        child: CustomText("Şifremi Unuttum"),
-      );
 
   Padding loginButton() => Padding(
         padding: EdgeInsets.only(bottom: Utils.extraHighPadding),
@@ -111,45 +104,46 @@ class RegisterView extends GetView<RegisterController> {
       );
 
   CustomTextFormField passwordField() {
-    return const CustomTextFormField(
-      label: "Şifre",
-      hintText: "Şifre Giriniz",
+    return CustomTextFormField(
+      label: LocaleKeys.common_password_label.tr,
+      hintText: LocaleKeys.common_password_hint.tr,
       obscureText: true,
       isRequired: true,
+      onChangeComplete: (val) => controller.registerModel.password = val ?? "",
     );
   }
 
   CustomTextFormField passwordRepeatField() {
-    return const CustomTextFormField(
-      label: "Şifre Tekrar",
-      hintText: "Şifreyi Tekrar Giriniz",
+    return CustomTextFormField(
+      label: LocaleKeys.common_password_repeat.tr,
+      hintText: LocaleKeys.common_password_repeat_hint.tr,
       obscureText: true,
       isRequired: true,
+      validator: (val) {
+        if (val != controller.registerModel.password) {
+          return LocaleKeys.common_password_repeat_error.tr;
+        }
+        return null;
+      },
     );
   }
 
   CustomTextFormField emailField() {
     return CustomTextFormField(
-      label: "Email",
+      label: LocaleKeys.common_email_label.tr,
       validator: (val) => validateMail(val),
-      hintText: "Email",
+      hintText: LocaleKeys.common_email_hint.tr,
       isRequired: true,
+      onSaved: (val) => controller.registerModel.email = val ?? "",
     );
   }
 
   CustomTextFormField nameField() {
-    return const CustomTextFormField(
-      label: "Ad",
-      hintText: "Ad",
+    return CustomTextFormField(
+      label: LocaleKeys.common_username_label.tr,
+      hintText: LocaleKeys.common_username_hint.tr,
       isRequired: true,
-    );
-  }
-
-  CustomTextFormField surnameField() {
-    return const CustomTextFormField(
-      label: "Soyad",
-      hintText: "Soyad",
-      isRequired: true,
+      onSaved: (val) => controller.registerModel.name = val ?? "",
     );
   }
 }

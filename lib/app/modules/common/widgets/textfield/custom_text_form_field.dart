@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../../../core/utils/getx_extensions.dart';
 import '../../../../../core/utils/utils.dart';
@@ -170,7 +171,7 @@ class CustomTextFormField extends StatelessWidget {
                         autovalidateMode: autovalidateMode,
                         validator: isRequired
                             ? (value) {
-                                if (value == null || value.isEmpty) return "Boş Olamaz";
+                                if (value == null || value.isEmpty) return LocaleKeys.common_not_null_error.tr;
                                 return validator != null ? validator!(value) : null;
                               }
                             : validator,

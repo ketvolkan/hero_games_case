@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:hero_games_case/app/modules/common/controllers/route_controller.dart';
+import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../app/modules/common/widgets/buttons/custom_inkwell.dart';
 import '../../app/modules/common/widgets/dialog/awesome_dialog/custom_awesome_dialog.dart';
@@ -19,12 +20,12 @@ import 'utils.dart';
 extension CustomGetDialogExtension on GetInterface {
   Future showErrorDialog(String subtitle, {String? title}) async {
     await Get.showAwesomeDialog(
-      title: title ?? "Uyarı!",
+      title: title ?? LocaleKeys.common_warning.tr,
       subtitle: subtitle,
       dialogType: DialogType.ERROR,
       headerIconColor: ColorTable.errorColor,
       disableBtnOk: true,
-      btnCancelText: "Tamam",
+      btnCancelText: LocaleKeys.common_ok.tr,
       btnCancelOnPressed: () {
         Get.back();
         if (Get.isDialogOpen ?? false) Get.back();
@@ -97,7 +98,7 @@ extension CustomGetDialogExtension on GetInterface {
               btnCancel: disableBtnCancel
                   ? null
                   : buildButton(
-                      text: btnCancelText ?? "İptal",
+                      text: btnCancelText ?? LocaleKeys.common_cancel.tr,
                       textColor: ColorTable.errorColor,
                       backgroundColor: ColorTable.errorColorLight,
                       onPressed: btnCancelOnPressed ?? () => Get.back()),
@@ -112,14 +113,14 @@ extension CustomGetDialogExtension on GetInterface {
                           );
                           cancellableOperation?.value.whenComplete(() => setState(() => counter--));
                           return buildButton(
-                            text: 'Bekle($counter)',
+                            text: '${LocaleKeys.common_wait.tr}($counter)',
                             textColor: ColorTable.getTextColor,
                             backgroundColor: Colors.grey.withOpacity(0.5),
                             onPressed: null,
                           );
                         }
                         return buildButton(
-                          text: btnOkText ?? "Tamam",
+                          text: btnOkText ?? LocaleKeys.common_ok.tr,
                           textColor: Colors.green,
                           backgroundColor: Colors.greenAccent.withOpacity(0.5),
                           onPressed: () {
@@ -151,24 +152,6 @@ extension CustomGetDialogExtension on GetInterface {
       ),
       barrierDismissible: false,
     );
-  }
-
-  Future<bool> showChangesMadedDialog() async {
-    bool result = false;
-    await Get.showAwesomeDialog(
-      title: "Uyarı!",
-      subtitle: "Yaptığınız Değişiklikler Kaydedilmeyecek",
-      btnOkOnPressed: () {
-        Get.back(); //Dialoğu kapatır
-        Get.back(); //Sayfayı Kapatır
-        result = true;
-      },
-      btnCancelOnPressed: () {
-        Get.back(); //Dialoğu kapatır
-        result = false;
-      },
-    );
-    return result;
   }
 }
 

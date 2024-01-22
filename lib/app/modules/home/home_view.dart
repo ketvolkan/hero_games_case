@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../../core/variables/colors.dart';
@@ -53,7 +54,7 @@ class HomeView extends GetView<HomeController> {
 
   DefaultAppBar buildAppBar() {
     return DefaultAppBar(
-      title: CustomText.high("Hobilerim"),
+      title: CustomText.high(LocaleKeys.common_hobbies.tr),
       leadingIcon: IconWithBackground.withIcon(icon: FeatherIcons.activity, iconColor: Get.theme.primaryColor),
     );
   }

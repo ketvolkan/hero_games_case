@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../app/modules/common/controllers/app_controller.dart';
+import '../../generated/locales.g.dart';
 import '../constants/endpoints.dart';
 import '../contracts/response_models/user_internet_info_model.dart';
 
@@ -68,9 +69,9 @@ String? validateMail(String? value, {bool isRequired = false}) {
   RegExp regExpEmail = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
   if (value == null || value.isEmpty) {
     if (!isRequired) return null;
-    return "Boş Olamaz";
+    return LocaleKeys.common_not_null_error.tr;
   } else if (!regExpEmail.hasMatch(value)) {
-    return "Lütfen Geçerli Bir Mail Giriniz";
+    return LocaleKeys.common_email_validate_err.tr;
   }
   return null;
 }

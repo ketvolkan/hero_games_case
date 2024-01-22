@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../../generated/locales.g.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../core/variables/colors.dart';
@@ -87,7 +87,7 @@ class LoginView extends GetView<LoginController> {
           children: [
             CustomCheckBox(value: controller.rememberMe, onChanged: (val) => controller.rememberMe = val ?? false),
             SizedBox(width: Utils.lowPadding),
-            CustomText("Beni Hatırla"),
+            CustomText(LocaleKeys.common_remember_me.tr),
           ],
         ),
       ),
@@ -96,7 +96,7 @@ class LoginView extends GetView<LoginController> {
 
   InkWell forgotPassword() => InkWell(
         onTap: () => forgotPassword(),
-        child: CustomText("Şifremi Unuttum"),
+        child: CustomText(LocaleKeys.common_forgot_password.tr),
       );
 
   Padding loginButton() => Padding(
@@ -106,17 +106,16 @@ class LoginView extends GetView<LoginController> {
           borderRadius: Utils.normalRadius,
           backgroundColor: Get.theme.primaryColor,
           overlayColor: Get.theme.primaryColor,
-          child: CustomText.high("Giriş Yap", bold: true, textColor: ColorTable.getReversedTextColor),
+          child: CustomText.high(LocaleKeys.common_login.tr, bold: true, textColor: ColorTable.getReversedTextColor),
           onPressed: () => controller.login(),
         ),
       );
 
   CustomTextFormField passwordField() {
     return CustomTextFormField(
-      label: "Şifre",
-      initialValue: "123456",
-      hintText: "Şifre Giriniz",
-      onSaved: (value) => controller.password = value ?? "",
+      label: LocaleKeys.common_password_label.tr,
+      hintText: LocaleKeys.common_password_hint.tr,
+      onSaved: (value) => controller.loginModel.password = value ?? "",
       obscureText: true,
       isRequired: true,
     );
@@ -124,10 +123,9 @@ class LoginView extends GetView<LoginController> {
 
   CustomTextFormField emailField() {
     return CustomTextFormField(
-      label: "Email",
-      initialValue: "ketvolkan1@gmail.com",
-      hintText: "Email",
-      onSaved: (value) => controller.email = value ?? "",
+      label: LocaleKeys.common_email_label.tr,
+      hintText: LocaleKeys.common_email_hint.tr,
+      onSaved: (value) => controller.loginModel.email = value ?? "",
       isRequired: true,
     );
   }

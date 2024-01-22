@@ -106,7 +106,7 @@ class _MenuButtonState extends State<MenuButton> {
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: Utils.lowPadding),
-                        child: CustomText.extraHigh(widget.menuName.tr, textColor: ColorTable.getTextColor),
+                        child: CustomText.extraHigh(widget.menuName, textColor: ColorTable.getTextColor),
                       ),
                     ),
                   ],

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/utils/utils.dart';
 import '../../../../../core/variables/colors.dart';
+import '../../../../../generated/locales.g.dart';
 import '../texts/custom_text.dart';
 import 'custom_elevated_button.dart';
 
@@ -11,30 +13,30 @@ extension SocialEnumExtension on SocialEnum {
   String get title {
     switch (this) {
       case SocialEnum.phone:
-        return "Telefon ile Giriş Yap";
+        return LocaleKeys.social_login_phone.tr;
       case SocialEnum.facebook:
-        return "Facebook ile Giriş Yap";
+        return LocaleKeys.social_login_facebook.tr;
       case SocialEnum.apple:
-        return "Apple ile Giriş Yap";
+        return LocaleKeys.social_login_apple.tr;
       case SocialEnum.google:
-        return "Google ile Giriş Yap";
+        return LocaleKeys.social_login_google.tr;
       default:
-        return "Normal Giriş";
+        return LocaleKeys.social_login_default.tr;
     }
   }
 
   String get register {
     switch (this) {
       case SocialEnum.phone:
-        return "Telefon ile Kayıt Ol";
+        return LocaleKeys.social_register_phone.tr;
       case SocialEnum.facebook:
-        return "Facebook ile Kayıt Ol";
+        return LocaleKeys.social_register_facebook.tr;
       case SocialEnum.apple:
-        return "Apple ile Kayıt Ol";
+        return LocaleKeys.social_register_apple.tr;
       case SocialEnum.google:
-        return "Google ile Kayıt Ol";
+        return LocaleKeys.social_register_google.tr;
       default:
-        return "Normal Kayıt";
+        return LocaleKeys.social_register_default.tr;
     }
   }
 

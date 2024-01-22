@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/services/languages/language_service.dart';
@@ -30,27 +31,27 @@ extension GetMenuViews on MenuEnums {
     switch (this) {
       case MenuEnums.GeneralManagementMenuView:
         return MenuView(
-          appBarTitle: "Ayarlar",
+          appBarTitle: LocaleKeys.common_settings.tr,
           leadingIcon: const IconWithBackground.withIcon(icon: FeatherIcons.settings),
           onLeadingPressed: () => bottomAppBarController.changeTabIndex(index: 0),
           showLeadingBackIcon: true,
           menuButtons: [
             MenuButton(
               //Müşteri yönetimi
-              menuName: "Hobi İşlemleri",
+              menuName: LocaleKeys.hobby_management.tr,
               icon: FeatherIcons.activity,
               onTap: () => menuOnPressed(MenuEnums.HobbyManagementMenuView),
             ),
             MenuButton(
               //Müşteri yönetimi
-              menuName: "Dil Değiştir",
+              menuName: LocaleKeys.common_change_language.tr,
               icon: Icons.language,
               onTap: () => menuOnPressed(MenuEnums.LanguageManagementMenuView),
             ),
             MenuButton(
               //Çıkış
               onTap: () async => managementController.logoutUser(),
-              menuName: "Çıkış Yap",
+              menuName: LocaleKeys.common_log_out.tr,
               icon: Icons.logout_rounded,
               showTrailingIcon: false,
             ),
@@ -58,14 +59,14 @@ extension GetMenuViews on MenuEnums {
         );
       case MenuEnums.HobbyManagementMenuView:
         return MenuView(
-          appBarTitle: "Hobi İşlemleri",
+          appBarTitle: LocaleKeys.hobby_management.tr,
           leadingIcon: const IconWithBackground.withIcon(icon: FeatherIcons.activity),
           onLeadingPressed: () =>
               onPressedBack != null ? onPressedBack(MenuEnums.GeneralManagementMenuView) : null, //Parent menüyü burada geri döndürün
           menuButtons: [
             MenuButton(
               //Hobilerim
-              menuName: "Hobilerim",
+              menuName: LocaleKeys.common_hobbies.tr,
               icon: FeatherIcons.activity,
               onTap: () => bottomAppBarController.changeTabIndex(index: 0),
             ),
@@ -73,7 +74,7 @@ extension GetMenuViews on MenuEnums {
         );
       case MenuEnums.LanguageManagementMenuView:
         return MenuView(
-          appBarTitle: "Dil Değiştir",
+          appBarTitle: LocaleKeys.common_change_language.tr,
           leadingIcon: const IconWithBackground.withIcon(icon: Icons.language),
           onLeadingPressed: () =>
               onPressedBack != null ? onPressedBack(MenuEnums.GeneralManagementMenuView) : null, //Parent menüyü burada geri döndürün
@@ -88,7 +89,7 @@ extension GetMenuViews on MenuEnums {
         );
       default:
         return MenuView(
-            appBarTitle: "Menü Bulunamadı",
+            appBarTitle: LocaleKeys.common_menu_not_found.tr,
             onLeadingPressed: () => onPressedBack != null ? onPressedBack(MenuEnums.GeneralManagementMenuView) : null,
             menuButtons: const []);
     }

@@ -1,13 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../../generated/locales.g.dart';
+import '../../../../core/services/storage/custom_storage_service.dart';
+import '../../../../core/services/storage/storage_key_enums.dart';
 import '../../../../core/utils/getx_extensions.dart';
 import '../../../../core/utils/utils.dart';
+import '../../../models/auth_models/login_model.dart';
+import '../../../repositories/auth_repository.dart';
 import '../../../routes/app_routes.dart';
+import '../../common/controllers/user_controller.dart';
 
 enum LoginState { Initial, Busy, Loaded, Error }
 
 class LoginController extends GetxController {
+  AuthRepository authRepository = Get.find<AuthRepository>();
+  UserController userController = Get.find<UserController>();
+  CustomStorageService storageService = Get.find<CustomStorageService>();
+
   final Rx<LoginState> _state = LoginState.Initial.obs;
   LoginState get state => _state.value;
   set state(LoginState value) => _state.value = value;
@@ -17,9 +27,7 @@ class LoginController extends GetxController {
   set rememberMe(bool value) => _rememberMe.value = value;
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  String email = '';
-  String password = '';
+  LoginModel loginModel = LoginModel();
 
   @override
   void onInit() {
@@ -43,12 +51,23 @@ class LoginController extends GetxController {
   Future<void> login() async {
     if (formKey.currentState?.validate() ?? false) {
       formKey.currentState?.save();
-      if (email.isEmpty || password.isEmpty) return;
+      if ((loginModel.email ?? "").isEmpty || (loginModel.password ?? "").isEmpty) return;
       await errorHandler(
         tryMethod: () async {
           state = LoginState.Busy;
-          //TODO
+          User? result = await authRepository.signIn(loginModel: loginModel);
+          if (result == null) {
+            Get.showToast(LocaleKeys.common_login_error.tr, toastStyle: ToastStyle.WARNING);
+            state = LoginState.Error;
+            return;
+          }
           state = LoginState.Loaded;
+          if (rememberMe) {
+            await storageService.write(StorageKeys.email.name, loginModel.email);
+            await storageService.write(StorageKeys.password.name, loginModel.password);
+            await storageService.write(StorageKeys.rememberMe.name, rememberMe);
+          }
+          userController.user = result;
           Get.offAndToNamed(AppRoutes.home.path);
         },
         onErr: () async {

@@ -1,9 +1,11 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hero_games_case/generated/locales.g.dart';
 
 import '../../../../core/services/languages/language_service.dart';
 import '../../../../core/utils/getx_extensions.dart';
+import '../../common/controllers/user_controller.dart';
 import '../../common/widgets/appbar/bottom_app_bar/bottom_app_bar_controller.dart';
 import 'widgets/menu_enum.dart';
 import 'widgets/menu_view.dart';
@@ -76,22 +78,21 @@ class SettingsController extends GetxController {
 
   Future<void> logoutUser() async {
     Get.showAwesomeDialog(
-      title: "Uyarı!",
+      title: LocaleKeys.common_warning.tr,
       dialogType: DialogType.WARNING,
-      subtitle: "Çıkış Yapmak İstediğinize Emin Misiniz?",
-      btnOkOnPressed: () async {},
+      subtitle: LocaleKeys.common_logout_subtitle.tr,
+      btnOkOnPressed: () async => Get.find<UserController>().logOut,
     );
   }
 
   Future<void> changeLanguage(LocaleLanguages language) async {
     Get.showAwesomeDialog(
-      title: "Uyarı!",
-      subtitle: "Dil Değişikliği Yapmak İstediğinize Emin Misiniz?",
+      title: LocaleKeys.common_warning.tr,
+      subtitle: LocaleKeys.common_language_subtitle.tr,
       dialogType: DialogType.WARNING,
       btnOkOnPressed: () async {
         await Get.find<LanguageService>().setLocale(locales[language]!);
         Get.back();
-        //TODO Dil Değiştirme
         Get.find<BottomAppBarController>().changeTabIndex(index: 0);
       },
       btnCancelOnPressed: () => Get.back(),
